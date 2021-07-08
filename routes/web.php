@@ -13,20 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', 'PageController@index' );
-
 Auth::routes();
-
-//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::prefix('admin')
     ->namespace('Admin')
     ->middleware('auth')
     ->name('admin.')
     ->group(function(){
-        // qui si mettono tutte le rotte admin (il nostro CRUD)
         Route::get('/','HomeController@index')->name('home');
         Route::resource('/posts', 'PostController');
     });
 
-Route::get('{any?}', 'PageController@index')->where('any','.*');
+Route::get('{any?}', function(){
+
+      return view('guest.home');
+
+    })->where('any','.*');

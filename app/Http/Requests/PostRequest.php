@@ -26,7 +26,8 @@ class PostRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'content' => 'required|min:3',
-            'category_id' => 'nullable|exists:categories,id'
+            'category_id' => 'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
         ];
     }
 
@@ -37,7 +38,8 @@ class PostRequest extends FormRequest
             'title.max' => 'Sono consentiti al massimo :max caratteri',
             'content.min' => 'Sono consentiti al minimo :min caratteri',
             'content.required' => 'Il contenuto è un campo obbligatorio!',
-            'category_id.exists' => 'La categoria scelta non è peresente'
+            'category_id.exists' => 'La categoria scelta non è peresente',
+            'tags.exists' => 'Il tag schelto  non è peresente'
         ];
 
     }
